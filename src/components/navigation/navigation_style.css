@@ -1,0 +1,17 @@
+.categoryName {
+    margin: 10px;
+    background-color: mediumaquamarine;
+    text-align: center;
+    cursor: pointer;
+}
+
+.categoryName:hover, .textsNames:hover {
+    border: 2px solid greenyellow;
+}
+
+.textsNames {
+    margin: 10px;
+    background-color: mediumorchid;
+    text-align: center;
+    cursor: pointer;
+}
