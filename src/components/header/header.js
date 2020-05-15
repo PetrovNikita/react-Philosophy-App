@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import './content_style.css';
+import {Link} from "react-router-dom";
+import './header.css';
+import { Row } from "../hoc";
 
 function Content({showAdditionalContent}) {
     return (showAdditionalContent ? 
@@ -28,12 +30,12 @@ function ShowHideSwitcher({showAdditionalContent, parentHandleClick}) {
 function Menu ({loggedIn}) {
     return ( 
         <div className="headerMenu"> {loggedIn ?
-        <button className="headerButton logOutButton" hidden>Log Out</button>
-        : <>
-        <button className="headerButton toRegisterButton">Register</button>
-        <button className="headerButton toLoginButton">Enter</button>
-        </>}
-    </div>
+            <button className="headerButton logOutButton" hidden>Log Out</button>
+            : <>
+            <button className="headerButton toRegisterButton"><Link to="/reg">Register</Link></button>
+            <button className="headerButton toLoginButton"><Link to="/login">Log In</Link></button>
+            </>}
+        </div>
     );
 }
 
@@ -46,13 +48,13 @@ export default function Header () {
     }
 
     return (
-        <header className="regPageHeader">
+        <Row>
             <div className="headerContentContainer">
                 <Content showAdditionalContent = {additionalContent}/>
                 <ShowHideSwitcher showAdditionalContent = {additionalContent} parentHandleClick = {handleClick}/>
             </div>
             <Menu loggedIn={false}/>
-        </header>
+        </Row>
     );
 }
 

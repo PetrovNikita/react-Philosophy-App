@@ -1,13 +1,31 @@
 import React from "react";
-import RegPage from "../pages/regPage";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux';
+
+import store from '../../store.js';
+import ErrorBoundry from '../error-boundry';
+import {ServiceProvider} from '../service-context';
+import mockService from '../../mockService';
+import RegPage from "../pages/RegPage";
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+
 
 export default function App () {
     return ( 
-    <Router>
-        <Switch>
-            <Route path="/" component={RegPage} exact />
-        </Switch>
-    </Router>
+        <Provider store={store} >
+            <ErrorBoundry>
+                <ServiceProvider value = {mockService}>
+                    <Router>
+                        <Switch>
+                            <Route path="/home/:textName?" component={HomePage} />
+                            <Route path="/reg" component={RegPage} />
+                            <Route path="/login" component={LoginPage} />
+                            <Route render={() => <Redirect to="/home/"/> } />
+                        </Switch>
+                    </Router>
+                </ServiceProvider>
+            </ErrorBoundry>
+        </Provider>
     );
 }

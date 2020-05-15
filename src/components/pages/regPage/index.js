@@ -1,3 +1,3 @@
-import RegPage from "./regPage.js";
+import RegPage from './RegPage.js';
 
 export default RegPage;

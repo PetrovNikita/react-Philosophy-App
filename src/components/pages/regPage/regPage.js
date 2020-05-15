@@ -1,12 +1,7 @@
 import React from "react";
-import Header from '../../header';
-import Navigation from '../../navigation';
+import RegForm from '../../regForm';
+
 
 export default function RegPage () {
-    return (
-        <React.Fragment>
-            <Header />
-            <Navigation />
-        </React.Fragment>
-    );
+    return <RegForm />;
 }

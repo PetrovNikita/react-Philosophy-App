@@ -38,7 +38,9 @@ module.exports = (env = {}) => {
     mode: isProd ? 'production': isDev && 'development',
 
     output: {
-      filename: isProd ? 'main-[hash:8].js' : undefined
+      path: __dirname + '/build',
+      filename: isProd ? 'main-[hash:8].js' : undefined,
+      publicPath: isProd ? '/build' : '/'
     },
 
     module: {
@@ -96,11 +98,8 @@ module.exports = (env = {}) => {
     plugins: getPlugins(),
 
     devServer: {
-      open: true
-    },
-
-    output: {
-      path: __dirname + '/build'
+      open: true,
+      historyApiFallback: true,
     }
   };
 };

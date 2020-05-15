@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import './navigation_style.css';
-import mockService from '../../mockService';
+import {withService} from '../hoc';
 
-export default function Navigation () {
+
+import './navigation.css';
+
+
+function Navigation ({service, selectText }) {
     const [categories, setCategories]= useState([]);
     const [selectedCategory, changeSelectedCategory] = useState();
 
     useEffect(() => {
-        console.log('eff');
-        mockService.getCategories()
+        service.getCategories()
             .then((res) => setCategories(res))
             .catch((err) => console.log(err))
     }, []);
@@ -27,11 +29,16 @@ export default function Navigation () {
                             <div key={categoryName} className="categoryName" onClick={() => selectCategory(categoryName)}>{categoryName}</div>
                             {categoryName == selectedCategory &&
                             textsNames.map((textName) =>
-                                <div key={textName} className="textsNames">{textName}</div>
+                                <div key={textName} className="textsNames" onClick={() => selectText(textName)}>
+                                    {textName}
+                                </div>
                             )}
                         </div>
                 )
             }
         </nav>
+        
     );
 }
+
+export default withService(Navigation);
