@@ -1,0 +1,9 @@
+.commentInstance {
+    margin: 5px;
+    background-color: gray;
+    border: grey 3px solid;
+}
+
+.commentText {
+    background-color: honeydew;
+}

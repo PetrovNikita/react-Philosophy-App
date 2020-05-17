@@ -2,11 +2,12 @@
   "name": "build-sandbox",
   "version": "1.0.0",
   "description": "Sandbox to play with React build tools",
-  "main": "index.js",
+  "main": "server.js",
+  "homepage": ".",
   "scripts": {
     "start": "webpack-dev-server",
     "devbuild": "webpack --env.mode=development",
-    "startserver": "nodemon ./server/server.js",
+    "startserver": "nodemon server.js",
     "build": "webpack --env.mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

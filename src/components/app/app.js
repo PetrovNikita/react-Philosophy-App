@@ -9,6 +9,8 @@ import mockService from '../../mockService';
 import RegPage from "../pages/RegPage";
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
+import Header from "../header";
+import Footer from "../footer";
 
 
 export default function App () {
@@ -17,12 +19,14 @@ export default function App () {
             <ErrorBoundry>
                 <ServiceProvider value = {mockService}>
                     <Router>
+                        <Header />
                         <Switch>
                             <Route path="/home/:textName?" component={HomePage} />
                             <Route path="/reg" component={RegPage} />
                             <Route path="/login" component={LoginPage} />
                             <Route render={() => <Redirect to="/home/"/> } />
                         </Switch>
+                        <Footer />
                     </Router>
                 </ServiceProvider>
             </ErrorBoundry>

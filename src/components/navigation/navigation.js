@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {withService} from '../hoc';
-
+import {withData} from '../hoc';
 
 import './navigation.css';
 
 
-function Navigation ({service, selectText }) {
-    const [categories, setCategories]= useState([]);
+function Navigation ({data, selectText }) {
+    const [categories, setCategories]= useState(data);
     const [selectedCategory, changeSelectedCategory] = useState();
-
+/*
     useEffect(() => {
         service.getCategories()
             .then((res) => setCategories(res))
             .catch((err) => console.log(err))
-    }, []);
+    }, []);*/
 
     const selectCategory = (categoryName) => {
         changeSelectedCategory(categoryName);
@@ -26,13 +25,15 @@ function Navigation ({service, selectText }) {
                 (
                     ({categoryName, textsNames}) => 
                         <div key={categoryName} className="categoryContainer">
-                            <div key={categoryName} className="categoryName" onClick={() => selectCategory(categoryName)}>{categoryName}</div>
-                            {categoryName == selectedCategory &&
-                            textsNames.map((textName) =>
-                                <div key={textName} className="textsNames" onClick={() => selectText(textName)}>
-                                    {textName}
-                                </div>
-                            )}
+                            <div key={categoryName} className="categoryName" onClick={() => selectCategory(categoryName)}>
+                                <span> {categoryName} </span>
+                                {categoryName == selectedCategory &&
+                                textsNames.map((textName) =>
+                                    <div key={textName} className="textsNames" onClick={() => selectText(textName)}>
+                                        {textName}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                 )
             }
@@ -41,4 +42,4 @@ function Navigation ({service, selectText }) {
     );
 }
 
-export default withService(Navigation);
+export default withData(Navigation);

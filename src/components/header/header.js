@@ -48,7 +48,7 @@ export default function Header () {
     }
 
     return (
-        <Row>
+        <Row className="headerContainer">
             <div className="headerContentContainer">
                 <Content showAdditionalContent = {additionalContent}/>
                 <ShowHideSwitcher showAdditionalContent = {additionalContent} parentHandleClick = {handleClick}/>

@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -38,9 +39,9 @@ module.exports = (env = {}) => {
     mode: isProd ? 'production': isDev && 'development',
 
     output: {
-      path: __dirname + '/build',
+      path: path.resolve(__dirname, "build"),
       filename: isProd ? 'main-[hash:8].js' : undefined,
-      publicPath: isProd ? '/build' : '/'
+      publicPath: isProd ? "/build/" : '/'
     },
 
     module: {

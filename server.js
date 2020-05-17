@@ -4,15 +4,15 @@ const fs = require("fs");
 var bodyParser = require("body-parser");
 var multer = require('multer');
 const mongoose = require("mongoose");
-const posts = require("./serverScripts/posts");
-const gets = require("./serverScripts/gets");
-const autentification = require("./serverScripts/autentification");
+const posts = require("./server/serverScripts/posts");
+const gets = require("./server/serverScripts/gets");
+const autentification = require("./server/serverScripts/autentification");
  
 var app = express();
 var jsonParser = bodyParser.json();
 var textParser = bodyParser.text();
 var upload = multer();
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(path.resolve(__dirname,'build')));
 app.use(upload.array());
 
 // подключение
@@ -25,9 +25,9 @@ mongoose.connect("mongodb://localhost:27017/commentdb", { useNewUrlParser: true 
 });
 
 //стартовая страница (регистрации \ входа)
-app.get('/', (req, res) => {
-    console.log('/');
-    fs.readFile(path.join(__dirname, '../build/index.html'), (error, data) => {
+app.get('/home', (req, res) => {
+    console.log('/home');
+    fs.readFile(path.join(__dirname, '/build/index.html'), (error, data) => {
         if(error){
             response.statusCode = 404;
             response.end("Resourse not found!");

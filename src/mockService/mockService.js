@@ -1,22 +1,43 @@
+import mockServer from './mockServer.js';
+
+const parser = new DOMParser();
+
 class MockService {
 
-    __categories = [
-        {
-            categoryName: 'The most main',
-            textsNames: ['The most main in person', 'The most main thing in live'],
-        },
-        {
-            categoryName: 'Imagine the situation',
-            textsNames: ['Fight or not'],
-        }
-    ];
-
-    getCategories = () => {
-        let categories = new Promise( (res, rej) => {setTimeout(() => res(this.__categories), 500)} );
+    getCategories = async () => {
+        let categories = await new Promise( (res, rej) => {setTimeout(() => res(mockServer.categories), 500)} );
         return categories;
     }
+    
+    getText = async (textName) => {
+        let text = await new Promise( (res, rej) => {setTimeout(
+            () => {
+                let obj = mockServer.texts.find( (textObj) => textObj.textName==textName);
+                res(obj.textBody)
+            }, 500)
+        } );
+        return text;
+    }
 
+    getComments = async (textName) => {
+        let comments = await new Promise( (res, rej) => { setTimeout(
+            () => {
+                let comments = mockServer.comments.filter( (comment) => comment.textName == textName);
+                res(comments)
+            }, 500)
+        } );
+        return comments;
+    }
 
+    postComment = async (commentObj) => {
+        let postRes = await new Promise( (res, rej) => { setTimeout(
+            () => {
+                mockServer.comments.push(commentObj);
+                res("comment got");
+            }, 500)
+        })
+        return postRes;
+    }
 }
 
 const mockService = new MockService();

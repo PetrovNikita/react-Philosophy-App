@@ -1,0 +1,25 @@
+.commentForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 100%;
+    margin: 10px;
+}
+
+.commentFormTextInput , .commentFormTextInput:focus {
+    border-radius: 10px;
+    width: 80%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.commentFormSubmit {
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-color: grey;
+    border-width: 1px;
+    box-shadow: none;
+}
+

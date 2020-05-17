@@ -1,25 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import {withRouter} from "react-router-dom";
-import Header from '../../header';
 import Navigation from '../../navigation';
 import Text from '../../text';
-import {Row} from '../../hoc';
+import {Row, withService, withData} from '../../hoc';
+import { Comments } from '../../comments';
+import { CommentForm } from '../../commentForm';
 
-function HomePage ({history, match}) {
+import './HomePage.css';
+
+
+function HomePage ({history, match, service}) {
     const {textName: textNameParam} = match.params;
     const selectText = (textName) => {
         history.push('/home/' + textName);
     };
 
+    const [counter, updateCounter] = useState(1);
+    const commentsGetData = () => service.getComments(textNameParam);
+
+    const updateCommentsGetData = () => {
+        updateCounter(({counter}) => counter++);   
+    }
+
     return (
         <React.Fragment>
-            <Header />
             <Row>
-                <Navigation selectText={selectText}/>
-                <Text textNameParam={textNameParam} />
+                <Navigation selectText={selectText} getData={service.getCategories} />
+                <div className="textAndCommentsContainer">
+                    <Text textNameParam={textNameParam} />
+                    <CommentForm textNameParam={textNameParam} updateComments={updateCommentsGetData} postComment={service.postComment}/>
+                    <Comments getData={commentsGetData}/>
+                </div>
             </Row>
         </React.Fragment>
     );
 }
 
-export default withRouter(HomePage);
+export default withService(withRouter(HomePage));
