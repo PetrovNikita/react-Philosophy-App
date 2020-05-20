@@ -9,12 +9,14 @@
 
 .commentFormTextInput , .commentFormTextInput:focus {
     border-radius: 10px;
-    width: 80%;
-    margin: 5px;
+    flex-grow: 100;
     padding: 5px;
+    margin: 5px;
+    vertical-align: middle;
 }
 
 .commentFormSubmit {
+    width: 70px;
     margin: 5px;
     padding: 5px 10px;
     border-radius: 10px;

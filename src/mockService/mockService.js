@@ -7,7 +7,7 @@ class MockService {
     getCategories = async () => {
         let categories = await new Promise( (res, rej) => {setTimeout(() => res(mockServer.categories), 500)} );
         return categories;
-    }
+    };
     
     getText = async (textName) => {
         let text = await new Promise( (res, rej) => {setTimeout(
@@ -17,7 +17,7 @@ class MockService {
             }, 500)
         } );
         return text;
-    }
+    };
 
     getComments = async (textName) => {
         let comments = await new Promise( (res, rej) => { setTimeout(
@@ -27,7 +27,7 @@ class MockService {
             }, 500)
         } );
         return comments;
-    }
+    };
 
     postComment = async (commentObj) => {
         let postRes = await new Promise( (res, rej) => { setTimeout(
@@ -37,6 +37,15 @@ class MockService {
             }, 500)
         })
         return postRes;
+    };
+
+    postRegForm = async (FormData) => {
+        console.log(FormData);
+        return "form data posted";
+    };
+
+    postLoginForm = async (FormData) => {
+        return "LOGIN_SUCCESS";
     }
 }
 

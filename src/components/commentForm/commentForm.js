@@ -39,13 +39,14 @@ class CommentForm extends React.Component {
             });
     }
 
+
+
     render() {
         return (
         <div className="commentFormContainer">
             <form className="commentForm" onSubmit={this.handleSubmit}>
-                <textarea name="commentText" onChange={this.handleCommentTextChange} onFocus={this.onFocus}
-                    value={this.state.commentText} 
-                    className="commentFormTextInput" 
+                <textarea name="commentText" onFocus={this.onFocus} onChange={this.handleCommentTextChange} onSubmit={this.handleSubmit}
+                    className="commentFormTextInput"
                     ref={this.textInputRef}
                     defaultValue="Your comment" cols="30" rows="1" />
                 <input type="submit" className="commentFormSubmit" value="Send"></input>

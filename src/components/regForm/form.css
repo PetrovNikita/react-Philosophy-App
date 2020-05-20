@@ -1,0 +1,20 @@
+.form {
+    width: 40%;
+    margin: 0px auto;
+    text-align: right;
+}
+
+.formHeader {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.formSubmit {
+    width: 50%;
+    height: 2em;
+    text-align: center;
+    background-color: mediumaquamarine;
+    border: grey 2px solid;
+    border-radius: 5px;
+}

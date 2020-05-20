@@ -28,8 +28,10 @@ function HomePage ({history, match, service}) {
                 <Navigation selectText={selectText} getData={service.getCategories} />
                 <div className="textAndCommentsContainer">
                     <Text textNameParam={textNameParam} />
-                    <CommentForm textNameParam={textNameParam} updateComments={updateCommentsGetData} postComment={service.postComment}/>
-                    <Comments getData={commentsGetData}/>
+                    <div className="formAndCommentsContainer">
+                        <CommentForm textNameParam={textNameParam} updateComments={updateCommentsGetData} postComment={service.postComment}/>
+                        <Comments getData={commentsGetData}/>
+                    </div>
                 </div>
             </Row>
         </React.Fragment>
