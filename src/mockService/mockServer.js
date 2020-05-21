@@ -38,6 +38,12 @@ class mockServer {
             commentText: 'Brave',
             commentDate: new Date()
         },
+        {
+            userLogin: 'Alina',
+            textName: 'The most main thing in live',
+            commentText: 'Happyness',
+            commentDate: new Date()
+        },
     ];
 }
 

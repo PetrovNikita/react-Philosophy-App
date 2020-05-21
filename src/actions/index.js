@@ -4,4 +4,10 @@ function logIn () {
     }
 }
 
-export {logIn};
+function logOut () {
+    return {
+        type: "LOG_OUT"
+    }
+}
+
+export {logIn, logOut};

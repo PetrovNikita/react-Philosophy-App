@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import {Link} from "react-router-dom";
-import './header.css';
 import { Row } from "../hoc";
+import {logOut} from '../../actions';
+
+import './header.css';
+
 
 function Content({showAdditionalContent}) {
     return (showAdditionalContent ? 
@@ -27,10 +31,10 @@ function ShowHideSwitcher({showAdditionalContent, parentHandleClick}) {
     )
 }
 
-function Menu ({loggedIn}) {
+function Menu ({loggedIn, logOut}) {
     return ( 
         <div className="headerMenu"> {loggedIn ?
-            <button className="headerButton logOutButton" hidden>Log Out</button>
+            <button className="headerButton logOutButton" onClick={logOut}>Log Out</button>
             : <>
             <button className="headerButton toRegisterButton"><Link to="/reg">Register</Link></button>
             <button className="headerButton toLoginButton"><Link to="/login">Log In</Link></button>
@@ -39,7 +43,7 @@ function Menu ({loggedIn}) {
     );
 }
 
-export default function Header () {
+function Header ({loggedIn, logOut}) {
     let [additionalContent, changeAdditionalContent] = useState(false);
 
     let handleClick = () => {
@@ -53,8 +57,19 @@ export default function Header () {
                 <Content showAdditionalContent = {additionalContent}/>
                 <ShowHideSwitcher showAdditionalContent = {additionalContent} parentHandleClick = {handleClick}/>
             </div>
-            <Menu loggedIn={false}/>
+            <Menu loggedIn={loggedIn} logOut={logOut}/>
         </Row>
     );
 }
 
+const mapStateToProps = ({loggedIn}) => {
+    return {loggedIn};
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logOut: () => dispatch(logOut())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

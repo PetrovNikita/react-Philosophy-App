@@ -1,5 +1,6 @@
 .textAndCommentsContainer {
     width: 50%;
+    color: black;
 }
 
 .formAndCommentsContainer {
@@ -7,3 +8,6 @@
     margin: 10px;
 }
 
+a {
+    text-decoration: none;
+}

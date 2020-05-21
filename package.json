@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "devbuild": "webpack --env.mode=development",
-    "startserver": "nodemon server.js",
+    "startserver": "nodemon server/server.js",
     "build": "webpack --env.mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
