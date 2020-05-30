@@ -1,9 +1,8 @@
 {
-  "name": "build-sandbox",
+  "name": "Comment_application",
   "version": "1.0.0",
-  "description": "Sandbox to play with React build tools",
   "main": "server.js",
-  "homepage": ".",
+  "homepage": "http://PetrovNikita.github.io/react-Philosophy-App",
   "scripts": {
     "start": "webpack-dev-server",
     "devbuild": "webpack --env.mode=development",
