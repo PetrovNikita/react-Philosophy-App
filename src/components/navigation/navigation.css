@@ -1,5 +1,6 @@
 .categoriesNav {
-    width: 40%;
+    flex-basis: 1fr;
+    min-width: 40%;
 }
 
 .categoryName {

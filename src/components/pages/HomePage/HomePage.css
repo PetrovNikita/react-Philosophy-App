@@ -1,11 +1,26 @@
 .textAndCommentsContainer {
-    width: 50%;
+    flex-basis: 1fr;
+    min-width: 60%;
     color: black;
+    margin: 10px;
 }
 
 .formAndCommentsContainer {
     border: turquoise 2px solid;
     margin: 10px;
+}
+
+.showNavButton {
+    display: inline-block;
+    margin: 10px;
+    align-self: normal;
+    min-width: 40px;
+    height: 40px;
+    border: 1px grey solid;
+    border-radius: 50%;
+    font-size: 30px;
+    color: black;
+    background-color: mediumaquamarine;
 }
 
 a {

@@ -1,61 +1,49 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import {withRouter, Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import Navigation from '../../navigation';
-import Text from '../../text';
-import {Row, withService, withData} from '../../hoc';
-import { Comments } from '../../comments';
-import { CommentForm } from '../../commentForm';
+import TextAndCommentsContainer from '../../textAndCommentsContainer';
+import {Row, withService} from '../../hoc';
+import { toggleNav } from "../../../actions";
 
 import './HomePage.css';
 
 
-function HomePage ({loggedIn, history, match, service}) {
+function HomePage ({loggedIn, history, match, service, showNavigation, toggleNav}) {
     const {textName: textNameParam} = match.params;
+    const clientWidthIsSmall = document.documentElement.clientWidth < 400;
+
     const selectText = (textName) => {
+        if (clientWidthIsSmall) toggleNav();
         history.push('/home/' + textName);
     };
 
-    const [counter, updateCounter] = useState(1);
-    const textGetData = () => service.getText(textNameParam);
-    const commentsGetData = () => service.getComments(textNameParam);
-
-    const updateCommentsGetData = () => {
-        updateCounter(({counter}) => counter++);   
-    }
-
     return (
         <React.Fragment>
+            {clientWidthIsSmall ?
+                showNavigation ? 
+                    <Navigation selectText={selectText} getData={service.getCategories} />
+                    :
+                    <Row>
+                        <button className="showNavButton" onClick={() => toggleNav()}>+</button>
+                        <TextAndCommentsContainer loggedIn={loggedIn} textNameParam={textNameParam} />
+                    </Row>
+                :
             <Row>
                 <Navigation selectText={selectText} getData={service.getCategories} />
-                
-                {loggedIn ? 
-                    textNameParam ?
-                        <div className="textAndCommentsContainer">
-                            <Text textNameParam={textNameParam} getData={textGetData}/>
-                            <div className="formAndCommentsContainer">
-                                <CommentForm textNameParam={textNameParam} updateComments={updateCommentsGetData} postComment={service.postComment}/>
-                                <Comments getData={commentsGetData}/>
-                            </div>
-                        </div>
-                    : 
-                    "Select text, please"   
-                :
-                    <div className="textAndCommentsContainer">
-                        You are not logged in. Fill in <Link key="reg" to="/reg">register form</Link> or <Link key="login" to="/login">log In</Link>, if you already registred.
-                    </div>
-                }
+                <TextAndCommentsContainer loggedIn={loggedIn} textNameParam={textNameParam} />
             </Row>
+            }
         </React.Fragment>
     );
 }
 
-const mapStateToProps = ({loggedIn}) => {
-    return {loggedIn};
+const mapStateToProps = ({loggedIn, showNavigation}) => {
+    return {loggedIn, showNavigation};
 }
 
-const mapDispatchToProps = () => {
-    return {};
+const mapDispatchToProps = (dispatch) => {
+    return {toggleNav: () => dispatch(toggleNav())};
 }
 
 export default withService(withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePage)));

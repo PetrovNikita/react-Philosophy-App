@@ -5,23 +5,21 @@ import './navigation.css';
 
 
 function Navigation ({data, selectText }) {
-    const [categories, setCategories]= useState(data);
     const [selectedCategory, changeSelectedCategory] = useState();
-/*
-    useEffect(() => {
-        service.getCategories()
-            .then((res) => setCategories(res))
-            .catch((err) => console.log(err))
-    }, []);*/
+    const [showHideNav, toggleShowHideNav] = useState(true);
+
 
     const selectCategory = (categoryName) => {
         changeSelectedCategory(categoryName);
-    }
+    };
+
+    const toggleNav = () => toggleShowHideNav((showHideNav) => !showHideNav);
     
+    //if (document.documentElement.clientWidth < 400 && showHideNav) return <button onClick={toggleNav}>+</button>;
 
     return (
         <nav className="categoriesNav">
-            {categories.map
+            {data.map
                 (
                     ({categoryName, textsNames}) => 
                         <div key={categoryName} className="categoryContainer">
@@ -29,7 +27,7 @@ function Navigation ({data, selectText }) {
                                 <span> {categoryName} </span>
                                 {categoryName == selectedCategory &&
                                 textsNames.map((textName) =>
-                                    <div key={textName} className="textsNames" onClick={() => selectText(textName)}>
+                                    <div key={textName} className="textsNames" onClick={() => {toggleNav(); selectText(textName);}}>
                                         {textName}
                                     </div>
                                 )}

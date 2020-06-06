@@ -1,5 +1,5 @@
 This project is like a forum, where people discuss some philosophy questions.
-To start project enter command in console: npm start.
+See it on https://petrovnikita.github.io/react-Philosophy-App/ .
 
 Client side of this project is written on React.
 It has three main pages: register, login and pages with text. (Each text having it's own URL.) Routing is made using react-dom-router.
