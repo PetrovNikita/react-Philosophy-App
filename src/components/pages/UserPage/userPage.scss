@@ -1,0 +1,18 @@
+@import '../../../styles/styles.scss';
+
+.persData {
+    min-width: 20%;
+    @extend %border;
+    flex-basis: 1fr;
+    overflow: hidden;
+}
+
+.comments {
+    min-width: 60%;
+    @extend %border;
+    flex-basis: 1fr;
+}
+
+.col {
+    flex-direction: column;
+}

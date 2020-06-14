@@ -19,10 +19,17 @@ class MockService {
         return text;
     };
 
-    getComments = async (textName) => {
+    getComments = async (paramName, paramValue) => {
         let comments = await new Promise( (res, rej) => { setTimeout(
             () => {
-                let comments = mockServer.comments.filter( (comment) => comment.textName == textName);
+                let comments = mockServer.comments
+                    .filter( (comment) => comment[paramName] == paramValue)
+                    .map( (comment) => {
+                        let newComment = {};
+                        for (let [field, value] of Object.entries(comment)) if (field != paramName) newComment[field]=value;
+                        return newComment;
+                    }
+                    );
                 res(comments)
             }, 500)
         } );

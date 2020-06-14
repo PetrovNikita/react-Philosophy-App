@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import './formInput.css';
+import './formInput.scss';
 
 const FormInput = ({value, type, name, className, placeholder, onChangeFn, onFocusFn, onBlurFn, formattingFn
         , validationFn=(value)=>true, inValidText}) => {

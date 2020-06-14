@@ -5,6 +5,8 @@ import Navigation from '../../navigation';
 import TextAndCommentsContainer from '../../textAndCommentsContainer';
 import {Row, withService} from '../../hoc';
 import { toggleNav } from "../../../actions";
+import Header from "../../header";
+import Footer from "../../footer";
 
 import './HomePage.css';
 
@@ -20,6 +22,7 @@ function HomePage ({loggedIn, history, match, service, showNavigation, toggleNav
 
     return (
         <React.Fragment>
+            <Header />
             {clientWidthIsSmall ?
                 showNavigation ? 
                     <Navigation selectText={selectText} getData={service.getCategories} />
@@ -34,6 +37,7 @@ function HomePage ({loggedIn, history, match, service, showNavigation, toggleNav
                 <TextAndCommentsContainer loggedIn={loggedIn} textNameParam={textNameParam} />
             </Row>
             }
+            <Footer />
         </React.Fragment>
     );
 }

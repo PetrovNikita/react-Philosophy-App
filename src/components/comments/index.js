@@ -1,4 +1,4 @@
-import Comments from './comments.js';
+import Comments from './comments.tsx';
 
 export {
     Comments

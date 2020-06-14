@@ -7,11 +7,10 @@ import ErrorBoundry from '../error-boundry';
 import {ServiceProvider} from '../service-context';
 import mockService from '../../mockService';
 import HomePage from '../pages/HomePage';
-import Header from "../header";
-import Footer from "../footer";
 
 const RegPage = lazy(() => import('../pages/RegPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
+const UserPage = lazy(() => import('../pages/UserPage'));
 
 export default function App () {
     return ( 
@@ -20,14 +19,13 @@ export default function App () {
                 <ServiceProvider value = {mockService}>
                     <Suspense fallback={<div>Загрузка...</div>}>
                         <Router>
-                            <Header />
                             <Switch>
                                 <Route path="/home/:textName?" component={HomePage} />
                                 <Route path="/reg" component={RegPage} />
                                 <Route path="/login" component={LoginPage} />
+                                <Route path="/users/:userLogin" component={UserPage} />
                                 <Route render={() => <Redirect to="/home/"/> } />
                             </Switch>
-                            <Footer />
                         </Router>
                     </Suspense>
                 </ServiceProvider>

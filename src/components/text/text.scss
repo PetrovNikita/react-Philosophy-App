@@ -1,0 +1,14 @@
+@import '../../styles/styles.scss';
+
+.textContainer {
+    @extend %border;
+    margin: 10px;
+}
+
+.textName {
+    @extend %textName;
+}
+
+.textBody {
+    padding: 10px;
+}

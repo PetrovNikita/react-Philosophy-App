@@ -9,7 +9,7 @@ const TextAndCommentsContainer = ({loggedIn, textNameParam, service}) => {
 
     const [counter, updateCounter] = useState(1);
     const textGetData = () => service.getText(textNameParam);
-    const commentsGetData = () => service.getComments(textNameParam);
+    const commentsGetData = () => service.getComments( "textName", textNameParam);
 
     const updateCommentsGetData = () => {
         updateCounter(({counter}) => counter++);   

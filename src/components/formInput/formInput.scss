@@ -1,6 +1,8 @@
+@import '../../styles/styles.scss';
+
 .formInput {
     margin: 10px;
     width: 50%;
     height: 2em;
-    border-radius: 5px;
+    @extend %border;
 }

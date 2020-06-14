@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withData } from '../hoc'; 
 
-import './text.css';
+import './text.scss';
 
 function Text ({textNameParam, data}) {
 
