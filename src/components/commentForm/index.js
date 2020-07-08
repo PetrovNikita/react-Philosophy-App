@@ -1,3 +1,3 @@
-import CommentForm from './commentForm.js';
+import CommentForm from './commentForm.tsx';
 
 export { CommentForm };

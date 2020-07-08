@@ -5,7 +5,7 @@ import {Comments} from '../../comments';
 
 import './userPage.scss';
 
-const UserPage: React.FC<{match: match<{userLogin: string}>, service: any}> = ({match, service}) => {
+const UserPage: React.FunctionComponent<any> = ({match, service}) => {
     const userLogin: string = match.params.userLogin;
     let classNm;
     if (document.documentElement.clientWidth < 400 ) classNm="col";
