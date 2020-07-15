@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { withData } from "../hoc";
 
-import './comments.css';
+import './comments.scss';
 import { IComment } from "../../interfaces";
 
 //показывает комменты из getComments(textName)

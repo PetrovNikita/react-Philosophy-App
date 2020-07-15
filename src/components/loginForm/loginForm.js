@@ -29,6 +29,7 @@ function LoginForm ({ service, logIn, loggedIn, history }) {
         event.preventDefault();
         if (submitValidation(fields)) {
           let formData = new FormData(event.target);
+          localStorage.setItem('userLogin', formData.get('login'));
           service.postLoginForm(formData)
             .then( (result) => { 
                 console.log(result); 

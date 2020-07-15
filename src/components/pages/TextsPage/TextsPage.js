@@ -8,7 +8,7 @@ import { toggleNav } from "../../../actions";
 import Header from "../../header";
 import Footer from "../../footer";
 
-import './HomePage.css';
+import './TextsPage.scss';
 
 
 function HomePage ({loggedIn, history, match, service, showNavigation, toggleNav}) {
@@ -17,7 +17,7 @@ function HomePage ({loggedIn, history, match, service, showNavigation, toggleNav
 
     const selectText = (textName) => {
         if (clientWidthIsSmall) toggleNav();
-        history.push('/home/' + textName);
+        history.push('/texts/'+ textName);
     };
 
     return (

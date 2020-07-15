@@ -9,4 +9,4 @@ To made the way of using functions , which are getting data from server there ar
 
 Plans: 
 1. Add a component: FormConstructor (input: fields and there methods, submit-function, output: form)
-2. Add page: UserProfile.
+2. Add to mockServer collection of users and use it in UsersPage, UserPage.

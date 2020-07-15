@@ -2,16 +2,16 @@ import React, {useState, useRef} from "react";
 import { withService } from "../hoc";
 import { IComment } from "../../interfaces"
 
-import './commentForm.css';
+import './commentForm.scss';
 
 const CommentForm:React.FC<{ textNameParam: string, postComment: (comment: IComment) => PromiseLike<string>, updateComments: ()=>Array<IComment> }> 
 = ({textNameParam, postComment, updateComments}) => {
-    const [state, changeState] = useState<{commentText?: string}>({});
+    const [commentText, changeCommentText] = useState<string>();
     const textInputRef = useRef<HTMLTextAreaElement>();
     
 
     function handleCommentTextChange(event) {
-        changeState({commentText: event.target.value});
+        changeCommentText(event.target.value);
     }
 
     function onFocus() {
@@ -21,8 +21,8 @@ const CommentForm:React.FC<{ textNameParam: string, postComment: (comment: IComm
     function handleSubmit(event) {
         event.preventDefault();
         let commentObj = {
-            'commentText': state.commentText,
-            'userLogin': 'Nik',//localStorage.getItem('userLogin'),
+            'commentText': commentText,
+            'userLogin': localStorage.getItem('userLogin'),
             'textName': textNameParam,
             'commentDate': new Date(),
         };
@@ -31,7 +31,7 @@ const CommentForm:React.FC<{ textNameParam: string, postComment: (comment: IComm
                 console.log(resp);
                 if (resp == "comment got") {
                     updateComments();
-                    changeState({commentText: 'Your comment'})
+                    changeCommentText('Your comment')
                 }
             });
     }
@@ -40,7 +40,7 @@ const CommentForm:React.FC<{ textNameParam: string, postComment: (comment: IComm
         <div className="commentFormContainer">
             <form className="commentForm" onSubmit={handleSubmit}>
                 <textarea name="commentText" onFocus={onFocus} onChange={handleCommentTextChange} onSubmit={handleSubmit}
-                    value = {state.commentText}
+                    value = {commentText}
                     className="commentFormTextInput"
                     ref={textInputRef}
                     defaultValue="Your comment" cols={30} rows={1} />

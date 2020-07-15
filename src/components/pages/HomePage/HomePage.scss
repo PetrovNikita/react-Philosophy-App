@@ -1,0 +1,9 @@
+@import "../../../styles/styles.scss";
+
+.link {
+    width: 30%;
+    @extend %border;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
